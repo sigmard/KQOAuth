@@ -18,7 +18,6 @@
  *  along with KQOAuth.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <QtCore>
-#include <QDesktopServices>
 
 #include "kqoauthmanager.h"
 #include "kqoauthmanager_p.h"
@@ -400,19 +399,19 @@ QNetworkAccessManager * KQOAuthManager::networkManager() const {
 
 //////////// Public convenience API /////////////
 
-void KQOAuthManager::getUserAuthorization(QUrl authorizationEndpoint) {
+QUrl KQOAuthManager::getUserAuthorization(QUrl authorizationEndpoint) {
     Q_D(KQOAuthManager);
 
     if (!d->hasTemporaryToken) {
         qWarning() << "No temporary tokens retreieved. Cannot get user authorization.";
         d->error = KQOAuthManager::RequestUnauthorized;
-        return;
+        return QString();
     }
 
     if (!authorizationEndpoint.isValid()) {
         qWarning() << "Authorization endpoint not valid. Cannot proceed.";
         d->error = KQOAuthManager::RequestEndpointError;
-        return;
+        return QString();
     }
 
     d->error = KQOAuthManager::NoError;
@@ -423,7 +422,9 @@ void KQOAuthManager::getUserAuthorization(QUrl authorizationEndpoint) {
 
     // Open the user's default browser to the resource authorization page provided
     // by the service.
-    QDesktopServices::openUrl(openWebPageUrl);
+    // QDesktopServices::openUrl(openWebPageUrl);
+
+    return openWebPageUrl;
 }
 
 void KQOAuthManager::getUserAccessTokens(QUrl accessTokenEndpoint) {

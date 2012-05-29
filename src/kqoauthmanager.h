@@ -58,7 +58,7 @@ public:
      * When the request is done it will emit signal requestReady(QByteArray networkReply).
      * NOTE: At the moment there is no timeout for the request.
      */
-    void executeRequest(KQOAuthRequest *request);    
+    void executeRequest(KQOAuthRequest *request);
     void executeAuthorizedRequest(KQOAuthRequest *request, int id);
     /**
      * Indicates to the user that KQOAuthManager should handle user authorization by
@@ -103,7 +103,7 @@ public:
      * us to access protected resources, the verifier token is stored in KQOAuthManager for further use.
      * In order to use this method, you must set setHandleUserAuthorization() to true.
      */
-    void getUserAuthorization(QUrl authorizationEndpoint);
+    QUrl getUserAuthorization(QUrl authorizationEndpoint);
     /**
      * This is a convenience API for retrieving the access token in exchange for the temporary token and the
      * verifier.

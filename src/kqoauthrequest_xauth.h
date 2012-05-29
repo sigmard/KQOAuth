@@ -21,7 +21,6 @@
 #define KQOAUTHREQUEST_XAUTH_H
 
 #include "kqoauthrequest.h"
-#include "kqoauthrequest_1.h"
 
 class KQOAuthRequest_XAuthPrivate;
 class KQOAUTH_EXPORT KQOAuthRequest_XAuth : public KQOAuthRequest

@@ -199,7 +199,7 @@ QString KQOAuthRequestPrivate::oauthTimestamp() const {
 #if QT_VERSION >= 0x040700
     return QString::number(QDateTime::currentDateTimeUtc().toTime_t());
 #else
-   return QString::number(QDateTime::currentDateTime().toUTC().toTime_t());
+    return QString::number(QDateTime::currentDateTime().toUTC().toTime_t());
 #endif
 
 }
@@ -439,7 +439,7 @@ QList<QByteArray> KQOAuthRequest::requestParameters() {
     if (!isValid() ) {
         qWarning() << "Request is not valid! I will still sign it, but it will probably not work.";
     }
-    
+
     d->signRequest();
 
     QPair<QString, QString> requestParam;
